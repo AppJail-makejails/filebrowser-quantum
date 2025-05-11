@@ -38,7 +38,7 @@ appjail makejail \
     -o file=/usr/local/etc/filebrowser-quantum.yml
 ```
 
-**/usr/local/etc/filebrowser-quantum.yml**:
+**files/usr/local/etc/filebrowser-quantum.yml**:
 
 ```yaml
 server:
