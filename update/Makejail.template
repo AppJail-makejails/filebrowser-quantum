@@ -1,34 +1,31 @@
 INCLUDE options/options.makejail
 
-ARG filebrowser_tag=%%TAG1%%
-ARG filebrowser_ajspec=gh+AppJail-makejails/filebrowser
+ARG filebrowser_quantum_tag=%%TAG1%%
+ARG filebrowser_quantum_ajspec=gh+AppJail-makejails/filebrowser
 
-FROM --entrypoint "${filebrowser_ajspec}" filebrowser:${filebrowser_tag}
+FROM --entrypoint "${filebrowser_quantum_ajspec}" filebrowser-quantum:${filebrowser_quantum_tag}
 
 STOP
 
 STAGE start
 
-ENV FB_ADDRESS=0.0.0.0
-ENV FB_LOG=/var/log/filebrowser/filebrowser.log
-ENV FB_DATABASE=/var/db/filebrowser/filebrowser.db
-ENV FB_ROOT=/usr/local/www/filebrowser
+ENV FILEBROWSER_CONFIG=/usr/local/etc/filebrowser-quantum.yml
 
 RUN daemon \
 	-f \
 	-t "Web File Browser" \
-	-u filebrowser \
-	-p /var/run/filebrowser.pid \
-		filebrowser
+	-u filebrowser-quantum \
+	-p /var/run/filebrowser-quantum.pid \
+		filebrowser-quantum
 
-STAGE custom:filebrowser_status
+STAGE custom:filebrowser_quantum_status
 
-CMD if [ -f "/var/run/filebrowser.pid" ]; then \
-        top -ap `head -1 /var/run/filebrowser.pid`; \
+CMD if [ -f "/var/run/filebrowser-quantum.pid" ]; then \
+        top -ap `head -1 /var/run/filebrowser-quantum.pid`; \
     fi
 
-STAGE custom:filebrowser_log
+STAGE custom:filebrowser_quantum_log
 
-CMD if [ -f "/var/log/filebrowser/filebrowser.log" ]; then \
-        less -R /var/log/filebrowser/filebrowser.log; \
+CMD if [ -f "/var/log/filebrowser-quantum/filebrowser.log" ]; then \
+        less -R /var/log/filebrowser-quantum/filebrowser.log; \
     fi

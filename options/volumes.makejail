@@ -1,3 +1,3 @@
-OPTION volume=filebrowser-db mountpoint:/var/db/filebrowser owner:1001 group:1001
-OPTION volume=filebrowser-log mountpoint:/var/log/filebrowser owner:1001 group:1001
-OPTION volume=filebrowser-www mountpoint:/usr/local/www/filebrowser owner:1001 group:1001
+OPTION volume=filebrowser-quantum-data mountpoint:/data owner:1001 group:1001
+OPTION volume=filebrowser-quantum-db mountpoint:/var/db/filebrowser-quantum owner:1001 group:1001
+OPTION volume=filebrowser-quantum-log mountpoint:/var/log/filebrowser-quantum owner:1001 group:1001

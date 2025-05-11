@@ -1,24 +1,19 @@
-ARG filebrowser_version=2.32.0
+ARG filebrowser_quantum_version=0.7.2-beta
 
 INCLUDE options/options.makejail
 INCLUDE options/volumes.makejail
 
-CMD echo "======> Downloading filebrowser... <======"
-CMD fetch -vo /tmp/filebrowser.tar.gz https://github.com/filebrowser/filebrowser/releases/download/v${filebrowser_version}/freebsd-amd64-filebrowser.tar.gz
+CMD echo "======> Downloading and installing File Browser Quantum <======"
+CMD fetch -o /usr/local/bin/filebrowser-quantum https://github.com/gtsteffaniak/filebrowser/releases/download/v${filebrowser_version}/freebsd-amd64-filebrowser
+CMD chmod +x /usr/local/bin/filebrowser-quantum
 
-CMD echo "======> Installing filebrowser... <======"
-CMD mkdir -vp /tmp/out
-CMD tar -C /tmp/out -xvf /tmp/filebrowser.tar.gz
-CMD mkdir -vp /usr/local/bin
-CMD cp -va /tmp/out/filebrowser /usr/local/bin
+CMD echo "======> Creating user 'filebrowser-quantum' <======"
+CMD pw useradd -n filebrowser-quantum -c "Web File Browser" -d /var/db/filebrowser-quantum -s /bin/sh
 
-CMD echo "======> Creating user 'filebrowser' <======"
-CMD pw useradd -n filebrowser -c "Web File Browser" -d /var/db/filebrowser -s /bin/sh
-
-CMD echo "======> Creating directories... <======"
-CMD mkdir -vp /usr/local/www/filebrowser
-CMD chown -v filebrowser:filebrowser /usr/local/www/filebrowser
-CMD mkdir -vp /var/db/filebrowser
-CMD chown -v filebrowser:filebrowser /var/db/filebrowser
-CMD mkdir -vp /var/log/filebrowser
-CMD chown -v filebrowser:filebrowser /var/log/filebrowser
+CMD echo "======> Creating directories <======"
+CMD mkdir -p /var/db/filebrowser-quantum
+CMD chown filebrowser-quantum:filebrowser-quantum /var/db/filebrowser-quantum
+CMD mkdir -p /var/log/filebrowser-quantum
+CMD chown filebrowser-quantum:filebrowser-quantum /var/log/filebrowser-quantum
+CMD mkdir -p /data
+CMD chown filebrowser-quantum:filebrowser-quantum /data
