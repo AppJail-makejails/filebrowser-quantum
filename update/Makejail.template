@@ -11,6 +11,8 @@ STAGE start
 
 ENV FILEBROWSER_CONFIG=/usr/local/etc/filebrowser-quantum.yml
 
+WORKDIR /var/db/filebrowser-quantum
+
 RUN daemon \
 	-f \
 	-t "Web File Browser" \
