@@ -34,7 +34,7 @@ appjail makejail \
     -o virtualnet=":<random> default" \
     -o nat \
     -o expose=80 \
-    -o copydir=files \
+    -o copydir=$PWD/files \
     -o file=/usr/local/etc/filebrowser-quantum.yml
 ```
 
