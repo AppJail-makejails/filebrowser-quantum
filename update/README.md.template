@@ -2,7 +2,7 @@
 
 github.com/gtsteffaniak/filebrowser
 
-<img src="https://private-user-images.githubusercontent.com/42989099/408705763-59986a2a-f960-4536-aa35-4a9a7c98ad48.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY5MDg1NzAsIm5iZiI6MTc0NjkwODI3MCwicGF0aCI6Ii80Mjk4OTA5OS80MDg3MDU3NjMtNTk5ODZhMmEtZjk2MC00NTM2LWFhMzUtNGE5YTdjOThhZDQ4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTEwVDIwMTc1MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTFkMjZjMWViNjZjYjU4YjU5NDJjMGQ4YTgyNGQyODZhZjg4ZmU5ZTYwMDE4MGEwYTdmM2RjNmQ2NGM0OTJhNWImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.oTFqgw3iS60QoyzslI-6E0BpgK0xFax9SSrH3aSF9vg" width="60%" height="auto" alt="filebrowser quantum logo">
+<img src="https://raw.githubusercontent.com/gtsteffaniak/filebrowser/refs/heads/main/frontend/public/img/logo.png" width="60%" height="auto" alt="filebrowser quantum logo">
 
 ## How to use this Makejail
 
