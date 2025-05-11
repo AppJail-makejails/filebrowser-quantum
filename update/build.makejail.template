@@ -4,7 +4,7 @@ INCLUDE options/options.makejail
 INCLUDE options/volumes.makejail
 
 CMD echo "======> Downloading and installing File Browser Quantum <======"
-CMD fetch -o /usr/local/bin/filebrowser-quantum https://github.com/gtsteffaniak/filebrowser/releases/download/v${filebrowser_version}/freebsd-amd64-filebrowser
+CMD fetch -o /usr/local/bin/filebrowser-quantum https://github.com/gtsteffaniak/filebrowser/releases/download/v${filebrowser_quantum_version}/freebsd-amd64-filebrowser
 CMD chmod +x /usr/local/bin/filebrowser-quantum
 
 CMD echo "======> Creating user 'filebrowser-quantum' <======"
