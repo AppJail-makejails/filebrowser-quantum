@@ -36,6 +36,7 @@ appjail makejail \
     -o expose=80 \
     -o copydir=$PWD/files \
     -o file=/usr/local/etc/filebrowser-quantum.yml
+appjail start filebrowser-quantum
 ```
 
 **files/usr/local/etc/filebrowser-quantum.yml**:
