@@ -1,7 +1,7 @@
 INCLUDE options/options.makejail
 
 ARG filebrowser_quantum_tag=%%TAG1%%
-ARG filebrowser_quantum_ajspec=gh+AppJail-makejails/filebrowser
+ARG filebrowser_quantum_ajspec=gh+AppJail-makejails/filebrowser-quantum
 
 FROM --entrypoint "${filebrowser_quantum_ajspec}" filebrowser-quantum:${filebrowser_quantum_tag}
 
