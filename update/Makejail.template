@@ -2,8 +2,12 @@ INCLUDE options/options.makejail
 
 ARG filebrowser_quantum_tag=%%TAG1%%
 ARG filebrowser_quantum_ajspec=gh+AppJail-makejails/filebrowser-quantum
+ARG filebrowser_quantum_conf=files/filebrowser-quantum.yml
 
 FROM --entrypoint "${filebrowser_quantum_ajspec}" filebrowser-quantum:${filebrowser_quantum_tag}
+
+CMD mkdir -p /usr/local/etc
+COPY ${filebrowser_quantum_conf} /usr/local/etc/filebrowser-quantum.yml
 
 STOP
 

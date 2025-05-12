@@ -33,28 +33,15 @@ appjail makejail \
     -f gh+AppJail-makejails/filebrowser-quantum \
     -o virtualnet=":<random> default" \
     -o nat \
-    -o expose=8080 \
-    -o copydir=$PWD/files \
-    -o file=/usr/local/etc/filebrowser-quantum.yml
+    -o expose=8080
 appjail start filebrowser-quantum
-```
-
-**files/usr/local/etc/filebrowser-quantum.yml**:
-
-```yaml
-server:
-  port: 8080
-  sources:
-    - name: 'main'
-      path: '/data'
-  logging:
-    - output: '/var/log/filebrowser-quantum/filebrowser.log'
 ```
 
 ### Arguments
 
 * `filebrowser_quantum_tag` (default: `13.5`): see [#tags](#tags).
 * `filebrowser_quantum_ajspec` (default: `gh+AppJail-makejails/filebrowser-quantum`): Entry point where the `appjail-ajspec(5)` file is located.
+* `filebrowser_quantum_conf` (default: `files/filebrowser-quantum.yml`): Configuration file.
 
 ### Check current status
 
