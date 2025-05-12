@@ -33,7 +33,7 @@ appjail makejail \
     -f gh+AppJail-makejails/filebrowser-quantum \
     -o virtualnet=":<random> default" \
     -o nat \
-    -o expose=80 \
+    -o expose=8080 \
     -o copydir=$PWD/files \
     -o file=/usr/local/etc/filebrowser-quantum.yml
 appjail start filebrowser-quantum
@@ -43,7 +43,7 @@ appjail start filebrowser-quantum
 
 ```yaml
 server:
-  port: 80
+  port: 8080
   sources:
     - name: 'main'
       path: '/data'
