@@ -71,5 +71,5 @@ appjail run -s filebrowser_quantum_log filebrowser-quantum
 
 | Tag        | Arch     | Version            | Type   | `filebrowser_quantum_version` |
 | ---------- | -------- | ------------------ | ------ | ----------------------------- |
-| `13.5` | `amd64`  | `13.5-RELEASE` | `thin` | `0.7.2-beta`                 |
-| `14.3` | `amd64`  | `14.3-RELEASE` | `thin` | `0.7.2-beta`                 |
+| `13.5` | `amd64`  | `13.5-RELEASE` | `thin` | `0.7.10-beta`                 |
+| `14.3` | `amd64`  | `14.3-RELEASE` | `thin` | `0.7.10-beta`                 |
