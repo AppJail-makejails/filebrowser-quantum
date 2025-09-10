@@ -2,36 +2,14 @@ INCLUDE options/options.makejail
 
 ARG filebrowser_quantum_tag=13.5
 ARG filebrowser_quantum_ajspec=gh+AppJail-makejails/filebrowser-quantum
-ARG filebrowser_quantum_conf=files/filebrowser-quantum.yml
+ARG filebrowser_quantum_conf?
 
 FROM --entrypoint "${filebrowser_quantum_ajspec}" filebrowser-quantum:${filebrowser_quantum_tag}
 
-CMD mkdir -p /usr/local/etc
-COPY ${filebrowser_quantum_conf} /usr/local/etc/filebrowser-quantum.yml
+RAW if [ -n "${filebrowser_quantum_conf}" ]; then
+    CMD mkdir -p /usr/local/etc
+    COPY ${filebrowser_quantum_conf} /usr/local/etc/filebrowser-quantum.yml
+RAW fi
 
-STOP
-
-STAGE start
-
-ENV FILEBROWSER_CONFIG=/usr/local/etc/filebrowser-quantum.yml
-
-WORKDIR /var/db/filebrowser-quantum
-
-RUN daemon \
-	-f \
-	-t "Web File Browser" \
-    -u filebrowser-quantum \
-	-p /var/run/filebrowser-quantum.pid \
-		filebrowser-quantum
-
-STAGE custom:filebrowser_quantum_status
-
-CMD if [ -f "/var/run/filebrowser-quantum.pid" ]; then \
-        top -ap `head -1 /var/run/filebrowser-quantum.pid`; \
-    fi
-
-STAGE custom:filebrowser_quantum_log
-
-CMD if [ -f "/var/log/filebrowser-quantum/filebrowser.log" ]; then \
-        less -R /var/log/filebrowser-quantum/filebrowser.log; \
-    fi
+SYSRC filebrowser_quantum_enable=YES
+SERVICE filebrowser-quantum start

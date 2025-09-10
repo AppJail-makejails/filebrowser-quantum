@@ -1,7 +1,0 @@
-server:
-  port: 8080
-  sources:
-    - name: 'main'
-      path: '/data'
-  logging:
-    - output: '/var/log/filebrowser-quantum/filebrowser.log'
