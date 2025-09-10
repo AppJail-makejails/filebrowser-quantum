@@ -1,2 +1,2 @@
-OPTION volume=filebrowser-quantum-data mountpoint:/usr/local/www/filebrowser-quantum owner:80 group:80 mode:700
-OPTION volume=filebrowser-quantum-db mountpoint:/var/db/filebrowser-quantum owner:80 group:80 mode:700
+OPTION volume=filebrowser-quantum-data mountpoint:/usr/local/www/filebrowser-quantum owner:80 group:80 perm:700
+OPTION volume=filebrowser-quantum-db mountpoint:/var/db/filebrowser-quantum owner:80 group:80 perm:700
