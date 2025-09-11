@@ -33,7 +33,7 @@ appjail makejail \
     -f gh+AppJail-makejails/filebrowser-quantum \
     -o virtualnet=":<random> default" \
     -o nat \
-    -o expose=8080
+    -o expose=3080
 ```
 
 ### Arguments
