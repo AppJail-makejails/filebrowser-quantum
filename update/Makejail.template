@@ -8,7 +8,7 @@ FROM --entrypoint "${filebrowser_quantum_ajspec}" filebrowser-quantum:${filebrow
 
 RAW if [ -n "${filebrowser_quantum_conf}" ]; then
     CMD mkdir -p /usr/local/etc
-    COPY ${filebrowser_quantum_conf} /usr/local/etc/filebrowser-quantum.yml
+    COPY ${filebrowser_quantum_conf} /usr/local/etc/filebrowser-quantum.yaml
 RAW fi
 
 SYSRC filebrowser_quantum_enable=YES
