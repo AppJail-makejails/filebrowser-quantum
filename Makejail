@@ -1,6 +1,6 @@
 INCLUDE options/options.makejail
 
-ARG filebrowser_quantum_tag=13.5
+ARG filebrowser_quantum_tag=14.3
 ARG filebrowser_quantum_ajspec=gh+AppJail-makejails/filebrowser-quantum
 ARG filebrowser_quantum_conf?
 
