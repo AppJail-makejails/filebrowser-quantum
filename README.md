@@ -1,57 +1,57 @@
-# File Browser Quantum
+# FileBrowser Quantum
 
-FileBrowser Quantum is a massive fork of the file browser open-source project with the following changes:
+FileBrowser Quantum provides an easy way to access and manage your files from the web. It has has a modern responsive interface that has many advanced features to manage users, access, sharing, and file preview and editing.
 
-1. Multiple sources support
-2. Login support for OIDC, password, and proxy.
-3. Revamped UI
-4. Simplified configuration via `config.yaml` config file.
-5. Ultra-efficient [indexing](https://github.com/gtsteffaniak/filebrowser/wiki/Indexing) and real-time updates
-   - Real-time search results as you type.
-   - Real-time monitoring and updates in the UI.
-   - Search supports file and folder sizes, along with various filters.
-6. Better listing browsing
-   - More file type previews, such as **office** and **video** file previews
-   - Instantly switches view modes and sort order without reloading data.
-   - Folder sizes are displayed.
-   - Navigating remembers the last scroll position.
-7. Developer API support
-   - Ability to create long-lived API Tokens.
-   - A helpful Swagger page is available at `/swagger` endpoint for API enabled users.
+filebrowserquantum.com
 
-github.com/gtsteffaniak/filebrowser
-
-<img src="https://raw.githubusercontent.com/gtsteffaniak/filebrowser/refs/heads/main/frontend/public/img/logo.png" width="60%" height="auto" alt="filebrowser quantum logo">
+<img src="https://filebrowserquantum.com/logo.svg" width="30%" height="auto" alt="FileBrowser Quantum logo">
 
 ## How to use this Makejail
 
-### Basic usage
-
-```sh
-appjail makejail \
-    -j filebrowser-quantum \
-    -f gh+AppJail-makejails/filebrowser-quantum \
+```console
+$ mkdir -p /var/appjail-volumes/filebrowser-quantum/db
+$ mkdir -p /var/appjail-volumes/filebrowser-quantum/www
+$ appjail oci run -Pd \
+    -o overwrite=force \
     -o virtualnet=":<random> default" \
     -o nat \
-    -o expose=3080
+    -o fstab="/var/appjail-volumes/filebrowser-quantum/db /var/db/filebrowser-quantum" \
+    -o fstab="/var/appjail-volumes/filebrowser-quantum/www /usr/local/www/filebrowser-quantum" \
+    ghcr.io/appjail-makejails/filebrowser-quantum filebrowser-quantum
 ```
 
-### Arguments
+### Arguments (stage: build)
 
-* `filebrowser_quantum_tag` (default: `14.3`): see [#tags](#tags).
-* `filebrowser_quantum_ajspec` (default: `gh+AppJail-makejails/filebrowser-quantum`): Entry point where the `appjail-ajspec(5)` file is located.
-* `filebrowser_quantum_conf` (optional): Configuration file.
+* `filebrowser-quantum_from` (default: `ghcr.io/appjail-makejails/filebrowser-quantum`): Location of OCI image. See also [OCI Configuration](#oci-configuration).
+* `filebrowser-quantum_tag` (default: `latest`): OCI image tag. See also [OCI Configuration](#oci-configuration).
+
+### Environment (OCI image)
+
+* `PGID` (default: `1000`): Equivalent to `PUID` but for the Process Group ID.
+* `PUID` (default: `1000`): Process User ID for the container's main process, allowing you to match the owner of files written to mounted host volumes to your host system's user. Writable volumes are changed based on this environment variable.
 
 ### Volumes
 
-| Name                     | Owner | Group | Perm | Type | Mountpoint                         |
-| ------------------------ | ----- | ----- | ---- | ---- | ---------------------------------- |
-| filebrowser-quantum-data | 80    | 80    | 700  |  -   | /usr/local/www/filebrowser-quantum |
-| filebrowser-quantum-db   | 80    | 80    | 700  |  -   | /var/db/filebrowser-quantum        |
+| Name | Owner | Group | Perm | Type | Mountpoint |
+| --- | --- | --- | --- | --- | --- |
+| appjail-730d326caa-usr_local_www_filebrowser-quantum | `${PUID}` | `${PGID}` | - | - | /usr/local/www/filebrowser-quantum |
+| appjail-a8024fc60d-var_db_filebrowser-quantum | `${PUID}` | `${PGID}` | - | - | /var/db/filebrowser-quantum |
 
-## Tags
+## OCI Configuration
 
-| Tag        | Arch     | Version            | Type   |
-| ---------- | -------- | ------------------ | ------ |
-| `14.3` | `amd64`  | `14.3-RELEASE` | `thin` |
-| `15` | `amd64`  | `15` | `thin` |
+```yaml
+build:
+  variants:
+    - tag: 15.1
+      containerfile: Containerfile
+      aliases: ["latest"]
+      default: true
+      args:
+        FREEBSD_RELEASE: "15.1"
+        NO_PKGCLEAN: "1"
+      cache_dirs: ["pkgcache0:/var/cache/pkg"]
+```
+
+## Notes
+
+1. `/usr/local/etc/filebrowser-quantum.yaml` is the configuration file used by this image, but keep in mind that the image will attempt to change the owner and group of this file if it has write permission.

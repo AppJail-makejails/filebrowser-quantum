@@ -1,15 +1,5 @@
-INCLUDE options/options.makejail
+ARG filebrowser_quantum_from=ghcr.io/appjail-makejails/filebrowser_quantum
+ARG filebrowser_quantum_tag=latest
 
-ARG filebrowser_quantum_tag=14.3
-ARG filebrowser_quantum_ajspec=gh+AppJail-makejails/filebrowser-quantum
-ARG filebrowser_quantum_conf?
-
-FROM --entrypoint "${filebrowser_quantum_ajspec}" filebrowser-quantum:${filebrowser_quantum_tag}
-
-RAW if [ -n "${filebrowser_quantum_conf}" ]; then
-    CMD mkdir -p /usr/local/etc
-    COPY ${filebrowser_quantum_conf} /usr/local/etc/filebrowser-quantum.yaml
-RAW fi
-
-SYSRC filebrowser_quantum_enable=YES
-SERVICE filebrowser-quantum start
+OPTION overwrite=force
+OPTION from=${filebrowser_quantum_from}:${filebrowser_quantum_tag}
