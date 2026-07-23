@@ -22,8 +22,8 @@ $ appjail oci run -Pd \
 
 ### Arguments (stage: build)
 
-* `filebrowser-quantum_from` (default: `ghcr.io/appjail-makejails/filebrowser-quantum`): Location of OCI image. See also [OCI Configuration](#oci-configuration).
-* `filebrowser-quantum_tag` (default: `latest`): OCI image tag. See also [OCI Configuration](#oci-configuration).
+* `filebrowser_quantum_from` (default: `ghcr.io/appjail-makejails/filebrowser-quantum`): Location of OCI image. See also [OCI Configuration](#oci-configuration).
+* `filebrowser_quantum_tag` (default: `latest`): OCI image tag. See also [OCI Configuration](#oci-configuration).
 
 ### Environment (OCI image)
 
