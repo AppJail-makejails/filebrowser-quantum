@@ -1,5 +1,6 @@
 ARG filebrowser_quantum_from=ghcr.io/appjail-makejails/filebrowser_quantum
 ARG filebrowser_quantum_tag=latest
 
+OPTION container=boot
 OPTION overwrite=force
 OPTION from=${filebrowser_quantum_from}:${filebrowser_quantum_tag}
