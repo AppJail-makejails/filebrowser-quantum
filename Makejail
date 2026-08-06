@@ -1,4 +1,4 @@
-ARG filebrowser_quantum_from=ghcr.io/appjail-makejails/filebrowser_quantum
+ARG filebrowser_quantum_from=ghcr.io/appjail-makejails/filebrowser-quantum
 ARG filebrowser_quantum_tag=latest
 
 OPTION container=boot
