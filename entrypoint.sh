@@ -8,7 +8,7 @@ export FILEBROWSER_CONFIG=/usr/local/etc/filebrowser-quantum.yaml
 
 create_user
 
-chown -R noroot:noroot \
+change_owner \
     /usr/local/www/filebrowser-quantum \
     /var/db/filebrowser-quantum
 
